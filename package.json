@@ -8,6 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "chart.js": "^4.3.3",
     "mathjs": "^11.9.1",
     "vue": "^3.3.4"
   },
