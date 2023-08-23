@@ -3,39 +3,41 @@
     <div class="flex gap-3 justify-between">
       <div class="flex flex-col">
         <label for="min">min: </label>
-        <input v-model="min" id="min" type="number">
+        <input v-model="min" id="min" type="number" class="text-black rounded-lg p-2">
       </div>
       <div class="flex flex-col">
         <label for="max">max: </label>
-        <input v-model="max" id="max" type="number">
+        <input v-model="max" id="max" type="number" class="text-black rounded-lg p-2">
       </div>
       <!--div class="flex flex-col">
         <label for="step">step: </label>
-        <input v-model="step" id="step" type="number">
+        <input v-model="step" id="step" type="number" class="text-black rounded-lg p-2">
       </div-->
     </div>
     <div class="flex gap-8 justify-between">
       <div class="flex flex-col w-full">
         <label for="slider">value: </label>
-        <input v-model="input" id="slider" type="range" :min="min" :max="max" :step="step">
+        <input v-model="input" id="slider" type="range" :min="min" :max="max" :step="step" class="text-black rounded-lg p-2">
       </div>
       <div class="flex flex-col">
         <label for="value">value: </label>
-        <input v-model="input" id="value" type="number">
+        <input v-model="input" id="value" type="number" class="text-black rounded-lg p-2">
       </div>
     </div>
     <div class="flex gap-3 justify-between">
       <div class="flex flex-col">
         <label for="f1">f1(x): </label>
-        <input v-model="f1" id="f1" type="text">
+        <input v-model="f1" id="f1" type="text" class="text-black rounded-lg p-2">
       </div>
       <div class="flex flex-col">
         <label for="f2">f2(x): </label>
-        <input v-model="f2" id="f2" type="text">
+        <input v-model="f2" id="f2" type="text" class="text-black rounded-lg p-2">
       </div>
     </div>
     <canvas ref="chartCanvas"></canvas>
+    <div class="text-white">{{ a }}</div>
     <canvas ref="chart2Canvas"></canvas>
+    <div class="text-white">{{ b }}</div>
   </main>
 </template>
 
@@ -65,6 +67,9 @@ const max = ref(15);
 const step = .5;
 const f1 = ref("1/2 x - 2");
 const f2 = ref("-1/4 x + 5");
+
+let a = 0;
+let b = 0;
 
 /*function getStep(){
     if(step <= 0){
@@ -174,6 +179,7 @@ function generatePoint(c, fin, x) {
   //console.log(yValue);
   c.data.datasets[1].data = [{ x: parseFloat(x), y: yValue }];
   c.update();
+  return yValue
 }
 
 let chart;
@@ -184,29 +190,19 @@ onMounted(async () => {
   chart2 = createChart(chart2Canvas.value, data2, options);
   generateData(chart, f1.value, min.value, max.value, step);
   generateData(chart2, f2.value, min.value, max.value, step);
-  generatePoint(chart, f1.value, input.value);
-  generatePoint(chart2, f2.value, input.value);
+  a = generatePoint(chart, f1.value, input.value);
+  b = generatePoint(chart2, f2.value, input.value);
 });
 
 watch([min, max, /*step, */f1, f2], () => {
-    if(step <= 0){
-        step = 1
-    }
   generateData(chart, f1.value, min.value, max.value, step);
   generateData(chart2, f2.value, min.value, max.value, step);
+  a = generatePoint(chart, f1.value, input.value);
+  b = generatePoint(chart2, f2.value, input.value);
 });
 
 watch(input, () => {
-  generatePoint(chart, f1.value, input.value);
-  generatePoint(chart2, f2.value, input.value);
+  a = generatePoint(chart, f1.value, input.value);
+  b = generatePoint(chart2, f2.value, input.value);
 });
 </script>
-
-<style scoped>
-input {
-    color: black;
-}
-* {
-    color: white;
-}
-</style>
