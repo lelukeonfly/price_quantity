@@ -43,18 +43,18 @@ const options = {
         beginAtZero: true,
         min: 0,
         grid: {
-          borderColor: 'red', // Set the grid border color
-          color: 'white', // Set the grid line color
-          borderWidth: 1, // Set the grid border width
+          borderColor: 'red',
+          color: 'white', 
+          borderWidth: 1,
         },
       },
       x: {
         beginAtZero: true,
         min: 0,
         grid: {
-          borderColor: 'red', // Set the grid border color
-          color: 'white', // Set the grid line color
-          borderWidth: 1, // Set the grid border width
+          borderColor: 'red',
+          color: 'white', 
+          borderWidth: 1,
         },
       },
     },
@@ -152,6 +152,7 @@ watch([min, max, step, f1, f2], () => {
   generateData(chart, f1.value, f2.value, min.value, max.value, step.value);
   a = generatePoint(chart, f1.value, input.value, yValues1);
   //b = generatePoint(chart, f2.value, input.value, yValues2);
+  console.log(f1,f2)
 });
 
 watch(input, () => {
