@@ -22,7 +22,7 @@ const props = defineProps({
     input: Number
 })
 
-const { min, max, step, f1, input} = toRefs(props)
+const { min, max, step, input} = toRefs(props)
 
 ChartJS.register(...registerables);
 
@@ -38,7 +38,7 @@ function createChart(canvas, data, options) {
 }
 
 
-//const f1 = ref("1/2 x - 2");
+const f1 = ref(props.f1);
 
 let a = 0;
 
