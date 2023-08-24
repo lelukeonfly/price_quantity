@@ -1,5 +1,4 @@
 <template>
-  <main class="flex flex-col gap-3">
     <div class="flex gap-3 justify-between">
       <div class="flex flex-col">
         <label for="f1">f1(x): </label>
@@ -8,7 +7,6 @@
     </div>
     <canvas ref="chartCanvas"></canvas>
     <div class="text-white">{{ a }}</div>
-  </main>
 </template>
 
 <script setup>
