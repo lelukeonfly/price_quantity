@@ -32,6 +32,9 @@
                         <Chart :min="min" :max="max" :step="step" :f1="f2" :input="Number(input)" />
                     </div>
                 </section>
+                <section>
+                        <CombinedChart :min="min" :max="max" :step="step" :f1="f1" :f2="f2" :input="Number(input)" />
+                </section>
     </main>
 </template>
 
@@ -40,6 +43,7 @@
 //import * as math from 'mathjs';
 import { Chart as ChartJS, registerables } from 'chart.js';
 import Chart from './components/Chart.vue';
+import CombinedChart from './components/CombinedChart.vue';
 
 ChartJS.register(...registerables);
 
