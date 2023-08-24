@@ -33,7 +33,7 @@
                     </div>
                 </section>
                 <section>
-                        <CombinedChart :min="min" :max="max" :step="step" :f1="f1" :f2="f2" :input="Number(input)" />
+                        <CombinedChart :min="min" :max="max" :step="step" :f1="f1" :f2="f2" :input="parseFloat(input)" />
                 </section>
     </main>
 </template>
@@ -52,6 +52,9 @@ const min = ref(0);
 const max = ref(15);
 //const step = ref(0.5);
 const step = .5;
-const f1 = ref("1/2 x - 2");
-const f2 = ref("-1/4 x + 5");
+//const f1 = ref("1/2 x - 2");
+//const f2 = ref("-1/4 x + 5");
+
+const f1 = ref("x");
+const f2 = ref("-x + 15");
 </script>

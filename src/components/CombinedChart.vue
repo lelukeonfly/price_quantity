@@ -1,6 +1,11 @@
 <template>
     <canvas ref="chartCanvas"></canvas>
-    {{ a }}
+    <div>
+        {{ a }}
+    </div>
+    <div>
+        {{ b }}
+    </div>
 </template>
 
 <script setup>
@@ -121,8 +126,6 @@ function generateData(c, f1, f2, min, max, step = 1) {
   c.data.datasets[0].data = yValues1;
   c.data.datasets[1].data = yValues2;
   c.update();
-  console.log(yValues1)
-  console.log(yValues2)
 }
 
 function generatePoint(c, fin, x) {
@@ -156,6 +159,7 @@ watch(input, () => {
   chart.data.datasets[2].data = [{ x: a[0], y: a[1]}];
   b = generatePoint(chart, f2.value, input.value);
   chart.data.datasets[3].data = [{ x: b[0], y: b[1]}];
+  chart.update()
 });
 </script>
 
